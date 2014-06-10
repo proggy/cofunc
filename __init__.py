@@ -21,22 +21,21 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 #
-"""Implement a class that represents a continuous function.
+"""Implement a class that represents a continuous function."""
 
-To do:
---> like "mean", implement functions like "min", "max", "sum" that accept
-    coFunc objects
---> ease plotting data of coFunc objects?
---> integrate the function
---> provide standard coFunc objects like "Sin", "Cos", "Tan" etc.
---> nD coFunc objects?
---> add math to coFunc2d"""
-__created__ = '2012-06-27'
-__modified__ = '2013-06-24'
+# 2012-06-27 - 2013-06-24
 import collections
 import scipy
 import scipy.interpolate
 import bundle
+# To do:
+# --> like "mean", implement functions like "min", "max", "sum" that accept
+#     coFunc objects
+# --> ease plotting data of coFunc objects?
+# --> integrate the function
+# --> provide standard coFunc objects like "Sin", "Cos", "Tan" etc.
+# --> nD coFunc objects?
+# --> add math to coFunc2d
 
 
 #=========================#
@@ -50,17 +49,17 @@ class coFunc(collections.Sequence):  # MutableSequence?
     computer approximation of some continuous function, various mathematical
     operations can be implemented that seem natural from a mathematical
     viewpoint, but not as trivial in a computer environment where data can have
-    different x-axis discretisations etc.
+    different x-axis discretisations etc."""
 
-    Possible extensions:
-    --> R->R, C->C, N->N, Z->Z? Different data types?
-    --> different dimensions? Mappings like R->R^3? R^2->R^3?
-    --> xlabel, ylabel
-    --> ease plotting the function
-    --> integrals
-    --> cut/trim the function (get a certain part of it) (also in y-direction)
-    --> yerr, xerr? make a new class for that?
-        also method to return coFunc(x, yerr), coFunc(x, xerr)"""
+    # Possible extensions:
+    # - R->R, C->C, N->N, Z->Z? Different data types?
+    # - different dimensions? Mappings like R->R^3? R^2->R^3?
+    # - xlabel, ylabel
+    # - ease plotting the function
+    # - integrals
+    # - cut/trim the function (get a certain part of it) (also in y-direction)
+    # - yerr, xerr? make a new class for that?
+    # also method to return coFunc(x, yerr), coFunc(x, xerr)
     __created__ = '2012-06-27'
     __modified__ = '2012-10-16'
     # replaces quantity.Quantity from 2012-04-23 until 2012-06-22
@@ -544,12 +543,11 @@ class coFunc2d(object):  # collections.Sequence? collections.MutableSequence?
     represent a computer approximation of a continuous 2D function, various
     mathematical operations can be implemented that seem like natural from a
     mathematical point of view, but not as trivial in a computer environment
-    where the data can have different x- and y-axis discretisations etc.
-
-    To do:
-    --> add math
-    --> return slices (intersections with planes) as 1D coFunc objects"""
+    where the data can have different x- and y-axis discretisations etc."""
     # 2012-12-11 - 2012-12-11
+    # To do:
+    # --> add math
+    # --> return slices (intersections with planes) as 1D coFunc objects
 
     def __init__(self, x=[], y=[], z=[], dtype=None, attrs={}):
         """Initialize the continuous 2D function object."""
@@ -700,3 +698,8 @@ class coFunc2d(object):  # collections.Sequence? collections.MutableSequence?
             return (type(self)(self.x, self.y, part) for part in attr)
         else:
             return type(self)(self.x, self.y, attr)
+
+
+def __main__():
+    import doctest
+    doctest.testmod()
