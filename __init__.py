@@ -21,7 +21,8 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 #
-"""Implement a class that represents a continuous function."""
+"""Implement a class that represents a continuous function, consisting of a set
+of discrete x-y value pairs."""
 
 # 2012-06-27 - 2013-06-24
 import collections
