@@ -23,7 +23,7 @@
 #
 """Implement a class whose instances hold discretized data representing continuous functions.
 """
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 import collections.abc
 import scipy
