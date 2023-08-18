@@ -21,27 +21,13 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 #
-"""Implement a class whose instances represent continuous functions.
+"""Implement a class whose instances hold discretized data representing continuous functions.
 """
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 import collections.abc
 import scipy
 import scipy.interpolate
-
-try:
-    from bundle import Bundle
-except ImportError:
-    Bundle = dict
-
-# To do:
-# --> like "mean", implement functions like "min", "max", "sum" that accept
-#     coFunc objects
-# --> ease plotting data of coFunc objects?
-# --> integrate the function
-# --> provide standard coFunc objects like "Sin", "Cos", "Tan" etc.
-# --> nD coFunc objects?
-# --> add math to coFunc2d
 
 
 #=========================#
@@ -57,18 +43,6 @@ class coFunc(collections.abc.Sequence):  # MutableSequence?
     viewpoint, but not as trivial in a computer environment where data can have
     different x-axis discretisations etc.
     """
-
-    # Possible extensions:
-    # - R->R, C->C, N->N, Z->Z? Different data types?
-    # - different dimensions? Mappings like R->R^3? R^2->R^3?
-    # - xlabel, ylabel
-    # - ease plotting the function
-    # - integrals
-    # - cut/trim the function (get a certain part of it) (also in y-direction)
-    # - yerr, xerr? make a new class for that?
-    # also method to return coFunc(x, yerr), coFunc(x, xerr)
-    # replaces quantity.Quantity from 2012-04-23 until 2012-06-22
-
     def __init__(self, x=[], y=[], dtype=None, attrs={}):
         """Initialize the continuous function object.
         """
@@ -86,7 +60,7 @@ class coFunc(collections.abc.Sequence):  # MutableSequence?
         self.sort()
 
         # initialize attribute structure
-        self.attrs = Bundle(**attrs)
+        self.attrs = attrs
 
     def sort(self):
         """Sort data points by x-values.
